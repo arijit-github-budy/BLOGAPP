@@ -17,8 +17,24 @@
     background-color: var(--textColor);
 }
 
+.responsiveMenu{
+    position: absolute;
+    top: 156px;
+    left: 0;
+    background-color: var(--bg);
+    height: cal(100vh - 100px);
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 36px;
+}
+
+
 @media screen and (max-width: 640px){
-    .hamburger{
+    .hamburger, .responsiveMenu{
         display: flex;
     }
 
@@ -26,3 +42,5 @@
         display: none;
     }
 }
+
+
