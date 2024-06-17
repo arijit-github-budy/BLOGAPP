@@ -96,7 +96,6 @@
     gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 50px;
-    margin-top: 25px;
 }
 
 .categoryItem{
@@ -143,10 +142,4 @@
 
 .date{
     color: grey;
-}
-
-@media screen and (max-width:1024px){
-    .container{
-        display:none
-    }
 }

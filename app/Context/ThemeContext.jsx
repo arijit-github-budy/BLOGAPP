@@ -1,31 +1,32 @@
-'use client';
-import { useState, createContext, useEffect } from "react";
+"use client";
 
-export const ThemeContext = createContext(null);
+import { createContext, useEffect, useState } from "react";
 
-const getFormLocalStorage = () => {
-    if(typeof window != undefined){
-        let themeMode = localStorage.getItem('themeMode');
-        themeMode = themeMode && (String(themeMode).toLowerCase() == 'dark' || String(themeMode).toLowerCase() == 'light') ? themeMode : 'light';
-        return themeMode;
-    }
-}
+export const ThemeContext = createContext();
 
-export const ThemeContextProvider = ({children}) => {
-    const [themeMode, setThemeMode] = useState(() => {
-        return getFormLocalStorage();
-    });
+const getFromLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    const value = localStorage.getItem("theme");
+    return value || "light";
+  }
+};
 
-    const themeToggle = () => {
-        setThemeMode(String(themeMode).toLowerCase() == 'light' ? 'dark' : 'light');
-    }
+export const ThemeContextProvider = ({ children }) => {
+  const [themeMode, setThemeMode] = useState(() => {
+    return getFromLocalStorage();
+  });
 
-    useEffect(() => {
-        localStorage.setItem("themeMode", themeMode);
-    }, [themeMode]);
-    return (
-        <ThemeContext.Provider value={{themeMode, themeToggle}}>
-            {children}
-        </ThemeContext.Provider>
-    )
-}
+  const themeToggle = () => {
+    setThemeMode(themeMode === "light" ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("theme", themeMode);
+  }, [themeMode]);
+
+  return (
+    <ThemeContext.Provider value={{ themeMode, themeToggle }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

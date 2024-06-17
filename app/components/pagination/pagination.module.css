@@ -1,2 +1,24 @@
 .container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
 }
+
+.button{
+    width: max-content;
+    border: none;
+    outline: none;
+    background: crimson;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: .8rem;
+    color: #fff
+}
+
+@media screen and (max-width:768px) {
+    .container{
+        justify-content: space-between;
+    }
+  }
